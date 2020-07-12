@@ -16,6 +16,6 @@ class MainViewModel(private val api : RickNMortyApi) : ViewModel() {
         return Pager(
             config = PagingConfig(pageSize = 20, maxSize = 500),
             pagingSourceFactory = { MyPagingSource(api) }
-        ).flow
+        ).flow.cachedIn(viewModelScope)
     }
 }
